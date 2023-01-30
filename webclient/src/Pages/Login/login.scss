@@ -1,22 +1,5 @@
-.login {
-  height: 100vh;
-  background-color: ;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .auth_card {
-    .auth-left {
-      h1 {}
-      p {}
-      span {}
-      button {}
-    }
-    .auth-right {
-      h1 {}
-      form {
-        input {}
-        botton {}
-      }
-    }
-  }
+.bg-img {
+  background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)), url("https://source.unsplash.com/random") center;
+  background-size: cover;
+
 }

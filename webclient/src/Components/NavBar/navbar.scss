@@ -1,0 +1,11 @@
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1 px solid black;
+  border-radius: 5px;
+  input {
+    border: none;
+    width: 500px;
+  }
+}
