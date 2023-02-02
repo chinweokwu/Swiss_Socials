@@ -14,11 +14,12 @@ import {
 } from "react-router-dom";
 import './style.scss';
 import {ModeContext} from "./useContext/ModeContext";
-function App() {
-  const currentUser = true;
+import {AuthContext} from "./useContext/AuthContext";
 
+function App() {
+  const {currentUser} = useContext(AuthContext)
   const {darkMode} = useContext(ModeContext);
-  console.log(darkMode)
+  
   const Layout = () =>{
     return (
       <div className={`theme-${darkMode ? "dark": "light"}`}>

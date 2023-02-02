@@ -2,10 +2,11 @@ import React,{useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import './navbar.scss';
 import { ModeContext } from "../../useContext/ModeContext";
-
+import { AuthContext } from "../../useContext/AuthContext";
 const  Navbar = ({ fixed }) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const {toggleMode,darkMode} = useContext(ModeContext);
+  const {currentUser} = useContext(AuthContext)
 
   return (
     <>
