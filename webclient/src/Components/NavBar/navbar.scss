@@ -1,8 +1,29 @@
+@import "../../style.scss";
+
+nav {
+  @include themify($themes){
+    background-color: themed("bg");
+    color: themed("textColor");
+    border-bottom: 2px solid themed("border");
+    margin-bottom: 0;
+    z-index: 99;
+    .nav-icon {
+      color: themed("navIcon");
+    }
+    .bars {
+      color: themed("textColorsoft");
+      @media screen and (max-width: 1024px) {
+        color: themed("textColorsoft");
+      }
+    }
+  }
+}
+
 .search {
   display: flex;
   align-items: center;
   gap: 10px;
-  border: 1 px solid black;
+  border: 1px solid black;
   border-radius: 5px;
   input {
     border: none;
