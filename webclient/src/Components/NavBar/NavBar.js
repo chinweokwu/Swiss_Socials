@@ -7,7 +7,7 @@ const  Navbar = ({ fixed }) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const {toggleMode,darkMode} = useContext(ModeContext);
   const {currentUser} = useContext(AuthContext)
-
+  console.log(currentUser)
   return (
     <>
       <nav className="sticky top-0 flex flex-wrap items-center justify-between px-2 py-3 mb-3">
@@ -104,7 +104,10 @@ const  Navbar = ({ fixed }) => {
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug nav-icon hover:opacity-75"
                   href="#pablo"
                 >
-                  <i className="fa-solid fa-circle-user text-lg leading-lg nav-icon opacity-75"></i><span className="ml-2">Paulooo</span>
+                  <img src={currentUser.profilePic} alt=""/>
+                  <span className="ml-2">
+                    {currentUser.name}
+                  </span>
                 </a>
               </li>
             </ul>

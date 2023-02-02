@@ -4,7 +4,7 @@ nav {
   @include themify($themes){
     background-color: themed("bg");
     color: themed("textColor");
-    border-bottom: 2px solid themed("border");
+    border-bottom: 1px solid themed("border");
     margin-bottom: 0;
     z-index: 99;
     .nav-icon {
@@ -15,6 +15,12 @@ nav {
       @media screen and (max-width: 1024px) {
         color: themed("textColorsoft");
       }
+    }
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
     }
   }
 }
