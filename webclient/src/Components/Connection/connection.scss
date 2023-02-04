@@ -1,0 +1,14 @@
+@import "../../style.scss";
+
+.connection {
+  @include themify($themes){
+
+    .connetion-info {
+      background-color: themed("bg");
+      color: themed("textColor");
+    }
+    .connect {
+      color: themed("textColor");
+    }
+  }
+}

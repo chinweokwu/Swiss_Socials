@@ -42,7 +42,7 @@ const  Navbar = ({ fixed }) => {
                   
                 >
                  {darkMode ?  
-                 <i onClick={toggleMode}  className="fa-solid fa-sun text-lg leading-lg nav-icon opacity-75 cursor-pointer"></i>
+                 <i onClick={toggleMode}  className="fa-solid fa-sun text-lg leading-lg text-yellow-400 opacity-75 cursor-pointer"></i>
                  : <i  onClick={toggleMode}  className="fa-solid fa-moon text-lg leading-lg nav-icon opacity-75 cursor-pointer"></i>} 
                 
                 </p>

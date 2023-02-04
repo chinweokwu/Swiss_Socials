@@ -1,0 +1,9 @@
+@import "../../style.scss";
+
+.comments {
+  @include themify($themes){
+    .btn-comments {
+      background-color: themed("bgSoft");
+    }
+  }
+}
