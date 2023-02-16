@@ -9,7 +9,7 @@ const LeftBar = () => {
         <div className='menu'>
           <div className='user'>
             <img src={currentUser.profilePic} alt=""/>
-            <span>{currentUser.name}</span>
+            <span>{currentUser.username}</span>
           </div>
           <div className='item'>
             <i className="fa-solid fa-user-group"></i>

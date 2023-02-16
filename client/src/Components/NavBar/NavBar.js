@@ -130,7 +130,7 @@ const  Navbar = ({ fixed }) => {
                 >
                   <img src={currentUser.profilePic} alt=""/>
                   <span className="ml-2">
-                    {currentUser.name}
+                    {currentUser.username}
                   </span>
                 </a>
               </li>

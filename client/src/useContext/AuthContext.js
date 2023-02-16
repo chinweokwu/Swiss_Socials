@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect  } from "react";
+import axios from 'axios';
 
 export const AuthContext = createContext();
 
@@ -8,14 +9,19 @@ export const AuthContextProvider = ({children}) => {
   )
 
 
-  const login = () => {
-    setCurrentUser({
-      id: 1,
-      email: "test@test.com",
-      name: "Paul Morah",
-      profilePic: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-    })
-  }
+  const login = async (values) => {
+    const res = await axios.post("http://localhost:8800/api/auth/login", values, {
+      withCredentials: true,
+    });
+    setCurrentUser(res.data)
+  };
+
+  const register = async (values) => {
+    const res = await axios.post("http://localhost:8800/api/auth/register", values, {
+      withCredentials: true,
+    });
+    setCurrentUser(res.data)
+  };
 
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(currentUser))
@@ -23,7 +29,7 @@ export const AuthContextProvider = ({children}) => {
 
 
   return (
-    <AuthContext.Provider value={{currentUser,login}}>
+    <AuthContext.Provider value={{currentUser,login,register}}>
       {children}
     </AuthContext.Provider>
   )
