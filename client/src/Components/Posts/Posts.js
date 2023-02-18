@@ -3,7 +3,6 @@ import Post from '../Post/Post';
 import "./posts.scss";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from '../../utils/axios';
-
 const Posts = () => {
 const {isLoading, error, data} = useQuery(["posts"], ()=>
   makeRequest.get("/posts").then(res =>{
@@ -15,6 +14,7 @@ console.log(data)
 
   return (
     <div className='posts'>
+      
       { error ? 
         "something went wrong!":
         isLoading ? 

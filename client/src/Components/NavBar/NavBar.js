@@ -8,7 +8,7 @@ const  Navbar = ({ fixed }) => {
   const {toggleMode,darkMode} = useContext(ModeContext);
   const [open, setOpen] = useState(false)
   const {currentUser} = useContext(AuthContext)
-  console.log(currentUser)
+
   return (
     <>
       <nav className="sticky top-0 flex flex-wrap items-center justify-between px-2 py-3 mb-3">
@@ -67,8 +67,7 @@ const  Navbar = ({ fixed }) => {
                 >
                  {darkMode ?  
                  <i onClick={toggleMode}  className="fa-solid fa-sun text-lg leading-lg text-yellow-400 opacity-75 cursor-pointer"></i>
-                 : <i  onClick={toggleMode}  className="fa-solid fa-moon text-lg leading-lg nav-icon opacity-75 cursor-pointer"></i>} 
-                
+                 : <i  onClick={toggleMode}  className="fa-solid fa-moon text-lg leading-lg nav-icon opacity-75 cursor-pointer"></i>}
                 </p>
               </li>
               <li className="nav-item">

@@ -9,6 +9,7 @@ import storyRoutes from './routes/storyRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser'; 
+import multer from 'multer';
 
 // MIDDLEWARE
 app.use((req,res,next) => {
@@ -20,6 +21,22 @@ app.use(cors({
   origin: "http://localhost:3000"
 }));
 app.use(cookieParser());
+
+const storage = multer.diskStorage({
+  destination: function(req,file,cb){
+    cb(null, '../client/public/uploads/');
+  },
+  filename: function(req,file,cb){
+    cb(null, Date.now() + file.originalname)
+  },
+});
+
+const upload = multer({storage: storage});
+
+app.post('/api/upload', upload.single('file'), (req,res) => {
+    const file = req.file;
+    return res.status(200).json(file.filename);
+})
  
 app.use('/api/auth', authRoutes);
 app.use('/api/comments', commentRoutes);

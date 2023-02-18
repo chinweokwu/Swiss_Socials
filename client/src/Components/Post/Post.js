@@ -2,12 +2,14 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import './post.scss';
 import Comments from '../Comments/Comments';
+import moment from 'moment';
 
 const Post = ({post}) => {
   const [commentOpen, setCommentOpen] = useState(false)
 
   return (
     <div className='post'>
+      
         <article className="mb-4 break-inside p-6 rounded-xl flex flex-col bg-clip-border">
         <div className="flex pb-6 items-center justify-between">
           <div className="flex">
@@ -26,7 +28,7 @@ const Post = ({post}) => {
                 </span>
               </div>
               <div className="text-slate-500 dark:text-slate-300">
-                January 22, 2021
+                {moment(post.createdAt).fromNow()}
               </div>
             </div>
           </div>
@@ -37,7 +39,7 @@ const Post = ({post}) => {
         <div className="py-4">
           <Link className="flex" to="#">
             <img alt='' className="max-w-full rounded-lg"
-              src={post.img} />
+              src={"./uploads/"+post.img} />
           </Link>
         </div>
         <p>
