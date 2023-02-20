@@ -9,12 +9,9 @@ const {isLoading, error, data} = useQuery(["posts"], ()=>
     return res.data;
   })
 )
- 
-console.log(data)
 
   return (
     <div className='posts'>
-      
       { error ? 
         "something went wrong!":
         isLoading ? 

@@ -6,10 +6,9 @@ import moment from 'moment';
 
 const Post = ({post}) => {
   const [commentOpen, setCommentOpen] = useState(false)
-
+  const liked = false
   return (
     <div className='post'>
-      
         <article className="mb-4 break-inside p-6 rounded-xl flex flex-col bg-clip-border">
         <div className="flex pb-6 items-center justify-between">
           <div className="flex">
@@ -46,9 +45,9 @@ const Post = ({post}) => {
          {post.desc}
         </p>
         <div className="py-4">
-          <div className="inline-flex items-center" to="#">
+          <div className="inline-flex items-center">
             <button className="mr-2">
-              <svg className="fill-rose-600 dark:fill-rose-400" style={{width: "24px", height: "24px"}} viewBox="0 0 24 24">
+              <svg className="fill-rose-600" style={{width: "24px", height: "24px"}} viewBox="0 0 24 24">
                 <path
                   d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
                 </path>
@@ -56,6 +55,7 @@ const Post = ({post}) => {
             </button>
             <span className="text-lg font-bold">68</span>
             <button 
+            key={post.id}
               onClick={() => setCommentOpen(!commentOpen)}
               type="button" 
               className="relative  mx-5 inline-flex items-center p-1 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -65,7 +65,7 @@ const Post = ({post}) => {
             </button>
           </div>
         </div>
-        {commentOpen && <Comments/>}
+        {commentOpen && <Comments key={post.id} postId={post.id}/>}
       </article>
     </div>
   )
