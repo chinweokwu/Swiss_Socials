@@ -20,7 +20,7 @@ export const getPosts = async (req, res) => {
   })
 };
 
-export const addPost = (req,res) => {
+export const createPost = (req,res) => {
   const token = req.cookies.accessToken;
   if(!token) return res.status(401).json("Not Logged in!");
 
@@ -43,3 +43,48 @@ export const addPost = (req,res) => {
     });
   })
 }
+
+export const deletePost = (req, res) => {
+  const token = req.cookies.accessToken;
+  if (!token) return res.status(401).json("Not logged in!");
+
+  Jwt.verify(token, "secretkey", (err, userInfo) => {
+    if (err) return res.status(403).json("Token is not valid!");
+
+    const q =
+      "DELETE FROM post WHERE `id`=? AND `postUserId` = ?";
+
+    db.query(q, [req.params.id, userInfo.id], (err, data) => {
+      if (err) return res.status(500).json(err);
+      if(data.affectedRows>0) return res.status(200).json("Post has been deleted.");
+      return res.status(403).json("You can delete only your post")
+    });
+  });
+};
+
+
+export const updatePost = (req, res) => {
+  const token = req.cookies.accessToken;
+  if (!token) return res.status(401).json("Not logged in!");
+
+  Jwt.verify(token, "secretkey", (err, userInfo) => {
+    if (err) return res.status(403).json("Token is not valid!");
+
+    const q = "UPDATE post SET title=?, desc=?, img=? WHERE `id`=? AND `postUserId`=?";
+
+    const values = [
+      req.body.title,
+      req.body.desc,
+      req.body.img,
+      req.params.id,
+      userInfo.id,
+    ];
+
+    db.query(q, values, (err, data) => {
+      if (err) return res.status(500).json(err);
+      if(data.affectedRows>0) return res.status(200).json("Post has been updated");
+      return res.status(403).json("You can update only your post");
+    });
+  });
+};
+
